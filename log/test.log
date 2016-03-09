@@ -1,0 +1,1843 @@
+  [1m[36m (86.5ms)[0m  [1mCREATE TABLE "archives" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "owner" varchar, "created_at" datetime NOT NULL, "updated_at" varchar NOT NULL, "local_commitment" varchar, "dir" boolean DEFAULT 'f', "show" boolean DEFAULT 't', "path" varchar DEFAULT '/') [0m
+  [1m[35m (99.8ms)[0m  CREATE TABLE "owners" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "email" varchar, "local_commitment" varchar) 
+  [1m[36m (88.9ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "photo_url" varchar, "postion" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "local_commitment" varchar) [0m
+  [1m[35m (96.6ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (100.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (61.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160301152153')
+  [1m[36m (88.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160225182136')[0m
+  [1m[35m (66.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151015162206')
+  [1m[36m (88.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160301123032')[0m
+  [1m[35m (66.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151016051431')
+  [1m[36m (77.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160301125121')[0m
+  [1m[35m (55.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151016022209')
+  [1m[36m (88.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151201201145')[0m
+  [1m[35m (77.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160301124940')
+  [1m[36m (55.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160301123841')[0m
+  [1m[35m (55.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160225190719')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 11:29:45', '2016-03-08 11:29:45', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 11:29:45', '2016-03-08 11:29:45', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 11:29:45', '2016-03-08 11:29:45', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 11:29:45', '2016-03-08 11:29:45', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2016-03-08 11:29:45', '2016-03-08 11:29:45', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2016-03-08 11:29:45', '2016-03-08 11:29:45', 298486374)[0m
+  [1m[35m (52.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 11:32:11', '2016-03-08 11:32:11', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 11:32:11', '2016-03-08 11:32:11', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 11:32:11', '2016-03-08 11:32:11', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 11:32:11', '2016-03-08 11:32:11', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2016-03-08 11:32:11', '2016-03-08 11:32:11', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2016-03-08 11:32:11', '2016-03-08 11:32:11', 298486374)[0m
+  [1m[35m (75.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 11:36:03', '2016-03-08 11:36:03', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 11:36:03', '2016-03-08 11:36:03', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 11:36:03', '2016-03-08 11:36:03', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 11:36:03', '2016-03-08 11:36:03', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2016-03-08 11:36:03', '2016-03-08 11:36:03', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2016-03-08 11:36:03', '2016-03-08 11:36:03', 298486374)[0m
+  [1m[35m (65.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianecosta@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Viviane"], ["email", "vivianecosta@gmail.com"], ["created_at", "2016-03-08 11:36:03.203041"], ["updated_at", "2016-03-08 11:36:03.203041"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 11:36:24', '2016-03-08 11:36:24', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 11:36:24', '2016-03-08 11:36:24', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 11:36:24', '2016-03-08 11:36:24', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 11:36:24', '2016-03-08 11:36:24', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2016-03-08 11:36:24', '2016-03-08 11:36:24', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2016-03-08 11:36:24', '2016-03-08 11:36:24', 298486374)[0m
+  [1m[35m (65.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianecosta@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Viviane"], ["email", "vivianecosta@gmail.com"], ["created_at", "2016-03-08 11:36:24.526862"], ["updated_at", "2016-03-08 11:36:24.526862"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 11:38:01', '2016-03-08 11:38:01', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 11:38:01', '2016-03-08 11:38:01', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 11:38:01', '2016-03-08 11:38:01', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 11:38:01', '2016-03-08 11:38:01', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2016-03-08 11:38:01', '2016-03-08 11:38:01', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2016-03-08 11:38:01', '2016-03-08 11:38:01', 298486374)[0m
+  [1m[35m (58.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 11:38:07', '2016-03-08 11:38:07', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 11:38:07', '2016-03-08 11:38:07', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 11:38:07', '2016-03-08 11:38:07', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 11:38:07', '2016-03-08 11:38:07', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2016-03-08 11:38:07', '2016-03-08 11:38:07', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2016-03-08 11:38:07', '2016-03-08 11:38:07', 298486374)[0m
+  [1m[35m (62.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 11:39:37', '2016-03-08 11:39:37', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 11:39:37', '2016-03-08 11:39:37', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 11:39:37', '2016-03-08 11:39:37', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 11:39:37', '2016-03-08 11:39:37', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2016-03-08 11:39:37', '2016-03-08 11:39:37', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2016-03-08 11:39:37', '2016-03-08 11:39:37', 298486374)[0m
+  [1m[35m (65.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Viviane"], ["email", "vivianec@gmail.com"], ["created_at", "2016-03-08 11:39:38.028282"], ["updated_at", "2016-03-08 11:39:38.028282"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 11:39:51', '2016-03-08 11:39:51', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 11:39:51', '2016-03-08 11:39:51', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 11:39:51', '2016-03-08 11:39:51', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 11:39:51', '2016-03-08 11:39:51', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2016-03-08 11:39:51', '2016-03-08 11:39:51', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 'MyString', '2016-03-08 11:39:51', '2016-03-08 11:39:51', 298486374)[0m
+  [1m[35m (89.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Viviane"], ["email", "vivianec@gmail.com"], ["created_at", "2016-03-08 11:39:51.956235"], ["updated_at", "2016-03-08 11:39:51.956235"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 11:44:51', '2016-03-08 11:44:51', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 11:44:51', '2016-03-08 11:44:51', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 11:44:51', '2016-03-08 11:44:51', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 11:44:51', '2016-03-08 11:44:51', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 11:44:51', '2016-03-08 11:44:51', 976597674)
+  [1m[36m (63.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 11:45:52', '2016-03-08 11:45:52', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 11:45:52', '2016-03-08 11:45:52', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 11:45:52', '2016-03-08 11:45:52', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 11:45:52', '2016-03-08 11:45:52', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 11:45:52', '2016-03-08 11:45:52', 976597674)
+  [1m[36m (65.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 976597674]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 12:08:21', '2016-03-08 12:08:21', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 12:08:21', '2016-03-08 12:08:21', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.4ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 12:08:21', '2016-03-08 12:08:21', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 12:08:21', '2016-03-08 12:08:21', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 12:08:21', '2016-03-08 12:08:21', 976597674)
+  [1m[36m (73.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 976597674]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 12:10:54', '2016-03-08 12:10:54', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 12:10:54', '2016-03-08 12:10:54', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 12:10:54', '2016-03-08 12:10:54', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 12:10:54', '2016-03-08 12:10:54', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 12:10:54', '2016-03-08 12:10:54', 976597674)
+  [1m[36m (66.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 976597674]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 12:11:49', '2016-03-08 12:11:49', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 12:11:49', '2016-03-08 12:11:49', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 12:11:49', '2016-03-08 12:11:49', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 12:11:49', '2016-03-08 12:11:49', 298486374)
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 12:11:49', '2016-03-08 12:11:49', 976597674)
+  [1m[36m (76.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'vivi' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 12:12:39', '2016-03-08 12:12:39', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 12:12:39', '2016-03-08 12:12:39', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 12:12:39', '2016-03-08 12:12:39', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 12:12:39', '2016-03-08 12:12:39', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 12:12:39', '2016-03-08 12:12:39', 976597674)
+  [1m[36m (86.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 976597674]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 12:13:56', '2016-03-08 12:13:56', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 12:13:56', '2016-03-08 12:13:56', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 12:13:56', '2016-03-08 12:13:56', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 12:13:56', '2016-03-08 12:13:56', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 12:13:56', '2016-03-08 12:13:56', 976597674)
+  [1m[36m (88.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 976597674]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 12:51:12', '2016-03-08 12:51:12', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 12:51:12', '2016-03-08 12:51:12', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 12:51:12', '2016-03-08 12:51:12', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 12:51:12', '2016-03-08 12:51:12', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 12:51:12', '2016-03-08 12:51:12', 976597674)
+  [1m[36m (89.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 976597674]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+-----------------------------------------------------
+AuthenticationControllerTest: test_should_get_welcome
+-----------------------------------------------------
+Processing by AuthenticationController#welcome as HTML
+  Rendered authentication/welcome.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------
+AuthenticationControllerTest: test_should_get_login
+---------------------------------------------------
+Processing by AuthenticationController#login as HTML
+  Rendered authentication/login.html.erb within layouts/login (0.3ms)
+Completed 200 OK in 98ms (Views: 97.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 12:51:21', '2016-03-08 12:51:21', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 12:51:21', '2016-03-08 12:51:21', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 12:51:21', '2016-03-08 12:51:21', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 12:51:21', '2016-03-08 12:51:21', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 12:51:21', '2016-03-08 12:51:21', 976597674)
+  [1m[36m (71.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 976597674]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (86.1ms)[0m  [1mCREATE TABLE "archives" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "owner" varchar, "created_at" datetime NOT NULL, "updated_at" varchar NOT NULL, "local_commitment" varchar, "dir" boolean DEFAULT 'f', "show" boolean DEFAULT 't', "path" varchar DEFAULT '/') [0m
+  [1m[35m (100.0ms)[0m  CREATE TABLE "owners" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "email" varchar, "local_commitment" varchar) 
+  [1m[36m (89.0ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "photo_url" varchar, "postion" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "local_commitment" varchar) [0m
+  [1m[35m (96.7ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (122.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (88.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160301152153')
+  [1m[36m (88.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160225182136')[0m
+  [1m[35m (78.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151015162206')
+  [1m[36m (77.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160301123032')[0m
+  [1m[35m (99.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151016051431')
+  [1m[36m (66.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160301125121')[0m
+  [1m[35m (66.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151016022209')
+  [1m[36m (66.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151201201145')[0m
+  [1m[35m (66.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160301124940')
+  [1m[36m (88.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160301123841')[0m
+  [1m[35m (77.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160225190719')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 12:54:21', '2016-03-08 12:54:21', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 12:54:21', '2016-03-08 12:54:21', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 12:54:21', '2016-03-08 12:54:21', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 12:54:21', '2016-03-08 12:54:21', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 12:54:21', '2016-03-08 12:54:21', 976597674)
+  [1m[36m (73.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 976597674]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------
+AuthenticationControllerTest: test_should_get_login
+---------------------------------------------------
+Processing by AuthenticationController#login as HTML
+  Rendered authentication/login.html.erb within layouts/login (0.9ms)
+Completed 200 OK in 98ms (Views: 97.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+-----------------------------------------------------
+AuthenticationControllerTest: test_should_get_welcome
+-----------------------------------------------------
+Processing by AuthenticationController#welcome as HTML
+  Rendered authentication/welcome.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (134.8ms)[0m  [1mCREATE TABLE "archives" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "owner" varchar, "created_at" datetime NOT NULL, "updated_at" varchar NOT NULL, "local_commitment" varchar, "dir" boolean DEFAULT 'f', "show" boolean DEFAULT 't', "path" varchar DEFAULT '/') [0m
+  [1m[35m (99.3ms)[0m  CREATE TABLE "owners" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "email" varchar, "local_commitment" varchar) 
+  [1m[36m (99.8ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "photo_url" varchar, "postion" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "local_commitment" varchar) [0m
+  [1m[35m (97.7ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (99.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (86.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160301152153')
+  [1m[36m (111.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160225182136')[0m
+  [1m[35m (88.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151015162206')
+  [1m[36m (88.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160301123032')[0m
+  [1m[35m (77.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151016051431')
+  [1m[36m (110.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160301125121')[0m
+  [1m[35m (77.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151016022209')
+  [1m[36m (77.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151201201145')[0m
+  [1m[35m (100.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160301124940')
+  [1m[36m (77.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160301123841')[0m
+  [1m[35m (77.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160225190719')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 12:55:08', '2016-03-08 12:55:08', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 12:55:08', '2016-03-08 12:55:08', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 12:55:08', '2016-03-08 12:55:08', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 12:55:08', '2016-03-08 12:55:08', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 12:55:08', '2016-03-08 12:55:08', 976597674)
+  [1m[36m (94.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 976597674]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------
+AuthenticationControllerTest: test_should_get_login
+---------------------------------------------------
+Processing by AuthenticationController#login as HTML
+  Rendered authentication/login.html.erb within layouts/login (0.9ms)
+Completed 200 OK in 102ms (Views: 102.2ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+-----------------------------------------------------
+AuthenticationControllerTest: test_should_get_welcome
+-----------------------------------------------------
+Processing by AuthenticationController#welcome as HTML
+  Rendered authentication/welcome.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (88.9ms)[0m  [1mCREATE TABLE "archives" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "owner" varchar, "created_at" datetime NOT NULL, "updated_at" varchar NOT NULL, "local_commitment" varchar, "dir" boolean DEFAULT 'f', "show" boolean DEFAULT 't', "path" varchar DEFAULT '/') [0m
+  [1m[35m (100.0ms)[0m  CREATE TABLE "owners" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "email" varchar, "local_commitment" varchar) 
+  [1m[36m (88.8ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "photo_url" varchar, "postion" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "local_commitment" varchar) [0m
+  [1m[35m (83.9ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (88.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (101.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160301152153')
+  [1m[36m (88.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160225182136')[0m
+  [1m[35m (66.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151015162206')
+  [1m[36m (99.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160301123032')[0m
+  [1m[35m (66.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151016051431')
+  [1m[36m (66.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160301125121')[0m
+  [1m[35m (88.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151016022209')
+  [1m[36m (66.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151201201145')[0m
+  [1m[35m (110.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160301124940')
+  [1m[36m (88.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160301123841')[0m
+  [1m[35m (88.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160225190719')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 12:55:44', '2016-03-08 12:55:44', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 12:55:44', '2016-03-08 12:55:44', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 12:55:44', '2016-03-08 12:55:44', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 12:55:44', '2016-03-08 12:55:44', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 12:55:44', '2016-03-08 12:55:44', 976597674)
+  [1m[36m (111.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------------------
+AuthenticationControllerTest: test_should_get_login
+---------------------------------------------------
+Processing by AuthenticationController#login as HTML
+  Rendered authentication/login.html.erb within layouts/login (1.1ms)
+Completed 200 OK in 109ms (Views: 108.4ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-----------------------------------------------------
+AuthenticationControllerTest: test_should_get_welcome
+-----------------------------------------------------
+Processing by AuthenticationController#welcome as HTML
+  Rendered authentication/welcome.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 976597674]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:05:46', '2016-03-08 13:05:46', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:05:46', '2016-03-08 13:05:46', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:05:46', '2016-03-08 13:05:46', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:05:46', '2016-03-08 13:05:46', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 13:05:46', '2016-03-08 13:05:46', 976597674)
+  [1m[36m (76.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:12:17', '2016-03-08 13:12:17', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:12:17', '2016-03-08 13:12:17', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:12:17', '2016-03-08 13:12:17', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:12:17', '2016-03-08 13:12:17', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 13:12:17', '2016-03-08 13:12:17', 976597674)
+  [1m[36m (46.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:13:10', '2016-03-08 13:13:10', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:13:10', '2016-03-08 13:13:10', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:13:10', '2016-03-08 13:13:10', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:13:10', '2016-03-08 13:13:10', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 13:13:10', '2016-03-08 13:13:10', 976597674)
+  [1m[36m (56.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:14:12', '2016-03-08 13:14:12', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:14:12', '2016-03-08 13:14:12', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:14:12', '2016-03-08 13:14:12', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:14:12', '2016-03-08 13:14:12', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 13:14:12', '2016-03-08 13:14:12', 976597674)
+  [1m[36m (59.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:14:19', '2016-03-08 13:14:19', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:14:19', '2016-03-08 13:14:19', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:14:19', '2016-03-08 13:14:19', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:14:19', '2016-03-08 13:14:19', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 13:14:19', '2016-03-08 13:14:19', 976597674)
+  [1m[36m (89.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 976597674]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:15:20', '2016-03-08 13:15:20', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:15:20', '2016-03-08 13:15:20', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:15:20', '2016-03-08 13:15:20', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:15:20', '2016-03-08 13:15:20', 298486374)
+  [1m[36mFixture Delete (0.6ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 13:15:20', '2016-03-08 13:15:20', 976597674)
+  [1m[36m (71.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Vivi' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Vivi"], ["email", "vivianec@gmail.com"], ["created_at", "2016-03-08 13:15:20.937707"], ["updated_at", "2016-03-08 13:15:20.937707"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 976597674]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:15:26', '2016-03-08 13:15:26', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:15:26', '2016-03-08 13:15:26', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:15:26', '2016-03-08 13:15:26', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:15:26', '2016-03-08 13:15:26', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 13:15:26', '2016-03-08 13:15:26', 976597674)
+  [1m[36m (80.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 976597674]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Vivi' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Vivi"], ["email", "vivianec@gmail.com"], ["created_at", "2016-03-08 13:15:27.047089"], ["updated_at", "2016-03-08 13:15:27.047089"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:15:34', '2016-03-08 13:15:34', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:15:34', '2016-03-08 13:15:34', 298486374)[0m
+  [1m[35mFixture Delete (0.3ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:15:34', '2016-03-08 13:15:34', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:15:34', '2016-03-08 13:15:34', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 13:15:34', '2016-03-08 13:15:34', 976597674)
+  [1m[36m (57.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 976597674]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Vivi' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Vivi"], ["email", "vivianec@gmail.com"], ["created_at", "2016-03-08 13:15:34.257870"], ["updated_at", "2016-03-08 13:15:34.257870"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:15:47', '2016-03-08 13:15:47', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:15:47', '2016-03-08 13:15:47', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:15:47', '2016-03-08 13:15:47', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:15:47', '2016-03-08 13:15:47', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 13:15:47', '2016-03-08 13:15:47', 976597674)
+  [1m[36m (73.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 976597674]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:17:07', '2016-03-08 13:17:07', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:17:07', '2016-03-08 13:17:07', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:17:07', '2016-03-08 13:17:07', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:17:07', '2016-03-08 13:17:07', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 13:17:07', '2016-03-08 13:17:07', 976597674)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Vivi', 'vivianecosta2@gmail.com', 'MyString', 'MyString', '2016-03-08 13:17:07', '2016-03-08 13:17:07', 358143215)[0m
+  [1m[35m (75.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 976597674]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" = 'Vivi' LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:17:29', '2016-03-08 13:17:29', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:17:29', '2016-03-08 13:17:29', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:17:29', '2016-03-08 13:17:29', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:17:29', '2016-03-08 13:17:29', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 13:17:29', '2016-03-08 13:17:29', 976597674)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Vivi', 'vivianecosta2@gmail.com', 'MyString', 'MyString', '2016-03-08 13:17:29', '2016-03-08 13:17:29', 358143215)[0m
+  [1m[35m (59.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viv' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Viv"], ["email", "vivianec@gmail.com"], ["created_at", "2016-03-08 13:17:29.732764"], ["updated_at", "2016-03-08 13:17:29.732764"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 976597674]]
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:17:47', '2016-03-08 13:17:47', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:17:47', '2016-03-08 13:17:47', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:17:47', '2016-03-08 13:17:47', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:17:47', '2016-03-08 13:17:47', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Viviane', 'vivianecosta@gmail.com', 'MyString', 'MyString', '2016-03-08 13:17:47', '2016-03-08 13:17:47', 976597674)
+  [1m[36m (187.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 976597674]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Viviane' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."name" = 'Vivi' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Vivi"], ["email", "vivianec@gmail.com"], ["created_at", "2016-03-08 13:17:47.617920"], ["updated_at", "2016-03-08 13:17:47.617920"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."name" IS NULL LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:33:06', '2016-03-08 13:33:06', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:33:06', '2016-03-08 13:33:06', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:33:06', '2016-03-08 13:33:06', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:33:06', '2016-03-08 13:33:06', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Beatriz Vasconcelos', 'beatrizv@gmail.com', 'MyString', 'MyString', '2016-03-08 13:33:06', '2016-03-08 13:33:06', 976597674)
+  [1m[36m (69.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------------------
+UserTest: test_user_with_same_email_as_other
+--------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Beatriz Vasconcelos"], ["email", "vivianec@gmail.com"], ["created_at", "2016-03-08 13:33:06.799428"], ["updated_at", "2016-03-08 13:33:06.799428"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Vivi"], ["email", "vivianec@gmail.com"], ["created_at", "2016-03-08 13:33:06.810219"], ["updated_at", "2016-03-08 13:33:06.810219"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:33:44', '2016-03-08 13:33:44', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:33:44', '2016-03-08 13:33:44', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:33:44', '2016-03-08 13:33:44', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:33:44', '2016-03-08 13:33:44', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Beatriz Vasconcelos', 'beatrizv@gmail.com', 'MyString', 'MyString', '2016-03-08 13:33:44', '2016-03-08 13:33:44', 976597674)
+  [1m[36m (46.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------------------
+UserTest: test_user_with_same_email_as_other
+--------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'beatrizv@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Vivi"], ["email", "vivianec@gmail.com"], ["created_at", "2016-03-08 13:33:44.741241"], ["updated_at", "2016-03-08 13:33:44.741241"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:33:55', '2016-03-08 13:33:55', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:33:55', '2016-03-08 13:33:55', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:33:55', '2016-03-08 13:33:55', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:33:55', '2016-03-08 13:33:55', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Beatriz Vasconcelos', 'beatrizv@gmail.com', 'MyString', 'MyString', '2016-03-08 13:33:55', '2016-03-08 13:33:55', 976597674)
+  [1m[36m (77.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------------------
+UserTest: test_user_with_same_email_as_other
+--------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'beatrizv@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Vivi"], ["email", "vivianec@gmail.com"], ["created_at", "2016-03-08 13:33:55.576600"], ["updated_at", "2016-03-08 13:33:55.576600"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:34:28', '2016-03-08 13:34:28', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:34:28', '2016-03-08 13:34:28', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:34:28', '2016-03-08 13:34:28', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:34:28', '2016-03-08 13:34:28', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Beatriz Vasconcelos', 'beatrizv@gmail.com', 'MyString', 'MyString', '2016-03-08 13:34:28', '2016-03-08 13:34:28', 976597674)
+  [1m[36m (62.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------------------
+UserTest: test_user_with_same_email_as_other
+--------------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'beatrizv@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Vivi"], ["email", "vivianec@gmail.com"], ["created_at", "2016-03-08 13:34:28.545034"], ["updated_at", "2016-03-08 13:34:28.545034"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+----------------------------------
+UserTest: test_user_with_same_name
+----------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'beatriz@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "Beatriz Vasconcelos"], ["email", "beatriz@gmail.com"], ["created_at", "2016-03-08 13:34:28.548115"], ["updated_at", "2016-03-08 13:34:28.548115"]]
+  [1m[36m (0.0ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:34:40', '2016-03-08 13:34:40', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-08 13:34:40', '2016-03-08 13:34:40', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:34:40', '2016-03-08 13:34:40', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-08 13:34:40', '2016-03-08 13:34:40', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Beatriz Vasconcelos', 'beatrizv@gmail.com', 'MyString', 'MyString', '2016-03-08 13:34:40', '2016-03-08 13:34:40', 976597674)
+  [1m[36m (65.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------
+UserTest: test_user_with_name_and_email
+---------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Vivi"], ["email", "vivianec@gmail.com"], ["created_at", "2016-03-08 13:34:40.736583"], ["updated_at", "2016-03-08 13:34:40.736583"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------
+UserTest: test_user_without_email
+---------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------
+UserTest: test_user_without_name
+--------------------------------
+  [1m[35m (0.0ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'vivianec@gmail.com' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.0ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+----------------------------------
+UserTest: test_user_with_same_name
+----------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'beatriz@gmail.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Beatriz Vasconcelos"], ["email", "beatriz@gmail.com"], ["created_at", "2016-03-08 13:34:40.746481"], ["updated_at", "2016-03-08 13:34:40.746481"]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+--------------------------------------------
+UserTest: test_user_with_same_email_as_other
+--------------------------------------------
+  [1m[36m (0.0ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'beatrizv@gmail.com' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 13:28:09', '2016-03-09 13:28:09', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 13:28:09', '2016-03-09 13:28:09', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 13:28:09', '2016-03-09 13:28:09', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 13:28:09', '2016-03-09 13:28:09', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Beatriz Vasconcelos', 'beatrizv@gmail.com', 'MyString', 'MyString', '2016-03-09 13:28:09', '2016-03-09 13:28:09', 976597674)
+  [1m[36m (82.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-----------------------------------------------
+SessionsControllerTest: test_should_create_user
+-----------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:16:05', '2016-03-09 14:16:05', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:16:05', '2016-03-09 14:16:05', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:16:05', '2016-03-09 14:16:05', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:16:05', '2016-03-09 14:16:05', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Beatriz Vasconcelos', 'beatrizv@gmail.com', 'MyString', 'MyString', '2016-03-09 14:16:05', '2016-03-09 14:16:05', 976597674)
+  [1m[36m (85.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-------------------------------------
+LoginTest: test_login_and_browse_site
+-------------------------------------
+Started GET "/authentication/login" for 127.0.0.1 at 2016-03-09 11:16:06 -0300
+Processing by AuthenticationController#login as HTML
+  Rendered authentication/login.html.erb within layouts/login (0.4ms)
+Completed 200 OK in 102ms (Views: 96.1ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:19:20', '2016-03-09 14:19:20', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:19:20', '2016-03-09 14:19:20', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:19:20', '2016-03-09 14:19:20', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:19:20', '2016-03-09 14:19:20', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Beatriz Vasconcelos', 'beatrizv@gmail.com', 'MyString', 'MyString', '2016-03-09 14:19:20', '2016-03-09 14:19:20', 976597674)
+  [1m[36m (135.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-------------------------------------
+LoginTest: test_login_and_browse_site
+-------------------------------------
+Started GET "/authentication/login" for 127.0.0.1 at 2016-03-09 11:19:20 -0300
+Processing by AuthenticationController#login as HTML
+  Rendered authentication/login.html.erb within layouts/login (0.4ms)
+Completed 200 OK in 104ms (Views: 97.7ms | ActiveRecord: 0.0ms)
+Started POST "/login" for 127.0.0.1 at 2016-03-09 11:19:20 -0300
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:19:52', '2016-03-09 14:19:52', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:19:52', '2016-03-09 14:19:52', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:19:52', '2016-03-09 14:19:52', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:19:52', '2016-03-09 14:19:52', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Beatriz Vasconcelos', 'beatrizv@gmail.com', 'MyString', 'MyString', '2016-03-09 14:19:52', '2016-03-09 14:19:52', 976597674)
+  [1m[36m (64.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-------------------------------------
+LoginTest: test_login_and_browse_site
+-------------------------------------
+Started GET "/authentication/login" for 127.0.0.1 at 2016-03-09 11:19:52 -0300
+Processing by AuthenticationController#login as HTML
+  Rendered authentication/login.html.erb within layouts/login (0.4ms)
+Completed 200 OK in 105ms (Views: 98.5ms | ActiveRecord: 0.0ms)
+Started POST "/authentication/login" for 127.0.0.1 at 2016-03-09 11:19:52 -0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"fulano@aiesec.net", "password"=>"[FILTERED]"}
+  Rendered authentication/login.html.erb within layouts/login (0.0ms)
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:22:11', '2016-03-09 14:22:11', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:22:11', '2016-03-09 14:22:11', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:22:11', '2016-03-09 14:22:11', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:22:11', '2016-03-09 14:22:11', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Beatriz Vasconcelos', 'beatrizv@gmail.com', 'MyString', 'MyString', '2016-03-09 14:22:11', '2016-03-09 14:22:11', 976597674)
+  [1m[36m (68.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-------------------------------------
+LoginTest: test_login_and_browse_site
+-------------------------------------
+Started GET "/authentication/login" for 127.0.0.1 at 2016-03-09 11:22:11 -0300
+Processing by AuthenticationController#login as HTML
+  Rendered authentication/login.html.erb within layouts/login (0.4ms)
+Completed 200 OK in 103ms (Views: 97.1ms | ActiveRecord: 0.0ms)
+Started POST "/authentication/login" for 127.0.0.1 at 2016-03-09 11:22:11 -0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"fulano@aiesec.net", "password"=>"[FILTERED]"}
+  Rendered authentication/login.html.erb within layouts/login (0.0ms)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:22:38', '2016-03-09 14:22:38', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:22:38', '2016-03-09 14:22:38', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:22:38', '2016-03-09 14:22:38', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:22:38', '2016-03-09 14:22:38', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Beatriz Vasconcelos', 'beatrizv@gmail.com', 'MyString', 'MyString', '2016-03-09 14:22:38', '2016-03-09 14:22:38', 976597674)
+  [1m[36m (52.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-------------------------------------
+LoginTest: test_login_and_browse_site
+-------------------------------------
+Started GET "/authentication/login" for 127.0.0.1 at 2016-03-09 11:22:38 -0300
+Processing by AuthenticationController#login as HTML
+  Rendered authentication/login.html.erb within layouts/login (0.4ms)
+Completed 200 OK in 112ms (Views: 98.4ms | ActiveRecord: 0.0ms)
+Started POST "/authentication/login" for 127.0.0.1 at 2016-03-09 11:22:38 -0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"fulano@aiesec.net", "password"=>"[FILTERED]"}
+  Rendered authentication/login.html.erb within layouts/login (0.1ms)
+Completed 200 OK in 3ms (Views: 3.2ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:23:16', '2016-03-09 14:23:16', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:23:16', '2016-03-09 14:23:16', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:23:16', '2016-03-09 14:23:16', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:23:16', '2016-03-09 14:23:16', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Beatriz Vasconcelos', 'beatrizv@gmail.com', 'MyString', 'MyString', '2016-03-09 14:23:16', '2016-03-09 14:23:16', 976597674)
+  [1m[36m (67.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-------------------------------------
+LoginTest: test_login_and_browse_site
+-------------------------------------
+Started GET "/authentication/login" for 127.0.0.1 at 2016-03-09 11:23:16 -0300
+Processing by AuthenticationController#login as HTML
+  Rendered authentication/login.html.erb within layouts/login (0.4ms)
+Completed 200 OK in 103ms (Views: 97.2ms | ActiveRecord: 0.0ms)
+Started POST "/authentication/login" for 127.0.0.1 at 2016-03-09 11:23:16 -0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"fulano@aiesec.net", "password"=>"[FILTERED]"}
+  Rendered authentication/login.html.erb within layouts/login (0.0ms)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:26:48', '2016-03-09 14:26:48', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:26:48', '2016-03-09 14:26:48', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:26:48', '2016-03-09 14:26:48', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:26:48', '2016-03-09 14:26:48', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Beatriz Vasconcelos', 'beatrizv@gmail.com', 'MyString', 'MyString', '2016-03-09 14:26:48', '2016-03-09 14:26:48', 976597674)
+  [1m[36m (114.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+-------------------------------------
+LoginTest: test_login_and_browse_site
+-------------------------------------
+Started GET "/authentication/login" for 127.0.0.1 at 2016-03-09 11:26:48 -0300
+Processing by AuthenticationController#login as HTML
+  Rendered authentication/login.html.erb within layouts/login (0.4ms)
+Completed 200 OK in 107ms (Views: 100.4ms | ActiveRecord: 0.0ms)
+Started POST "/authentication/login" for 127.0.0.1 at 2016-03-09 11:26:48 -0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"fulano@aiesec.net", "password"=>"[FILTERED]"}
+  Rendered authentication/login.html.erb within layouts/login (0.1ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:27:38', '2016-03-09 14:27:38', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:27:38', '2016-03-09 14:27:38', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:27:38', '2016-03-09 14:27:38', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:27:38', '2016-03-09 14:27:38', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Beatriz Vasconcelos', 'beatrizv@gmail.com', 'MyString', 'MyString', '2016-03-09 14:27:38', '2016-03-09 14:27:38', 976597674)
+  [1m[36m (50.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-------------------------------------
+LoginTest: test_login_and_browse_site
+-------------------------------------
+Started GET "/authentication/login" for 127.0.0.1 at 2016-03-09 11:27:38 -0300
+Processing by AuthenticationController#login as HTML
+  Rendered authentication/login.html.erb within layouts/login (0.4ms)
+Completed 200 OK in 106ms (Views: 99.8ms | ActiveRecord: 0.0ms)
+Started POST "/authentication/login" for 127.0.0.1 at 2016-03-09 11:27:38 -0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"fulano@aiesec.net", "password"=>"[FILTERED]"}
+  Rendered authentication/login.html.erb within layouts/login (0.0ms)
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:28:35', '2016-03-09 14:28:35', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:28:35', '2016-03-09 14:28:35', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:28:35', '2016-03-09 14:28:35', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:28:35', '2016-03-09 14:28:35', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Beatriz Vasconcelos', 'beatrizv@gmail.com', 'MyString', 'MyString', '2016-03-09 14:28:35', '2016-03-09 14:28:35', 976597674)
+  [1m[36m (63.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-------------------------------------
+LoginTest: test_login_and_browse_site
+-------------------------------------
+Started GET "/authentication/login" for 127.0.0.1 at 2016-03-09 11:28:35 -0300
+Processing by AuthenticationController#login as HTML
+  Rendered authentication/login.html.erb within layouts/login (0.4ms)
+Completed 200 OK in 107ms (Views: 100.5ms | ActiveRecord: 0.0ms)
+Started POST "/authentication/login" for 127.0.0.1 at 2016-03-09 11:28:35 -0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"fulano@aiesec.net", "password"=>"[FILTERED]"}
+  Rendered authentication/login.html.erb within layouts/login (0.0ms)
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:29:39', '2016-03-09 14:29:39', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:29:39', '2016-03-09 14:29:39', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:29:39', '2016-03-09 14:29:39', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:29:39', '2016-03-09 14:29:39', 298486374)
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Beatriz Vasconcelos', 'beatrizv@gmail.com', 'MyString', 'MyString', '2016-03-09 14:29:39', '2016-03-09 14:29:39', 976597674)
+  [1m[36m (53.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-------------------------------------
+LoginTest: test_login_and_browse_site
+-------------------------------------
+Started GET "/authentication/login" for 127.0.0.1 at 2016-03-09 11:29:39 -0300
+Processing by AuthenticationController#login as HTML
+  Rendered authentication/login.html.erb within layouts/login (0.5ms)
+Completed 200 OK in 107ms (Views: 100.4ms | ActiveRecord: 0.0ms)
+Started POST "/authentication/login" for 127.0.0.1 at 2016-03-09 11:29:39 -0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"fulano@aiesec.net", "password"=>"[FILTERED]"}
+  Rendered authentication/login.html.erb within layouts/login (0.1ms)
+Completed 200 OK in 3ms (Views: 3.1ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:32:57', '2016-03-09 14:32:57', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:32:57', '2016-03-09 14:32:57', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:32:57', '2016-03-09 14:32:57', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:32:57', '2016-03-09 14:32:57', 298486374)
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Beatriz Vasconcelos', 'beatrizv@gmail.com', 'MyString', 'MyString', '2016-03-09 14:32:57', '2016-03-09 14:32:57', 976597674)
+  [1m[36m (50.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------
+LoginTest: test_unsucessful_login
+---------------------------------
+Started GET "/authentication/login" for 127.0.0.1 at 2016-03-09 11:32:57 -0300
+Processing by AuthenticationController#login as HTML
+  Rendered authentication/login.html.erb within layouts/login (0.4ms)
+Completed 200 OK in 103ms (Views: 96.8ms | ActiveRecord: 0.0ms)
+Started POST "/authentication/login" for 127.0.0.1 at 2016-03-09 11:32:57 -0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"fulano@aiesec.net", "password"=>"[FILTERED]"}
+  Rendered authentication/login.html.erb within layouts/login (0.0ms)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+-------------------------------
+LoginTest: test_sucessful_login
+-------------------------------
+Started GET "/authentication/login" for 127.0.0.1 at 2016-03-09 11:32:57 -0300
+Processing by AuthenticationController#login as HTML
+  Rendered authentication/login.html.erb within layouts/login (0.0ms)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms)
+Started POST "/authentication/login" for 127.0.0.1 at 2016-03-09 11:32:57 -0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"gabriela.brasil@aiesec.net", "password"=>"[FILTERED]"}
+  Rendered authentication/login.html.erb within layouts/login (0.1ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:33:21', '2016-03-09 14:33:21', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 14:33:21', '2016-03-09 14:33:21', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:33:21', '2016-03-09 14:33:21', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 14:33:21', '2016-03-09 14:33:21', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Beatriz Vasconcelos', 'beatrizv@gmail.com', 'MyString', 'MyString', '2016-03-09 14:33:21', '2016-03-09 14:33:21', 976597674)
+  [1m[36m (66.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-------------------------------
+LoginTest: test_sucessful_login
+-------------------------------
+Started GET "/authentication/login" for 127.0.0.1 at 2016-03-09 11:33:21 -0300
+Processing by AuthenticationController#login as HTML
+  Rendered authentication/login.html.erb within layouts/login (0.4ms)
+Completed 200 OK in 102ms (Views: 96.2ms | ActiveRecord: 0.0ms)
+Started POST "/authentication/login" for 127.0.0.1 at 2016-03-09 11:33:21 -0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"gabriela.brasil@aiesec.net", "password"=>"[FILTERED]"}
+  Rendered authentication/login.html.erb within layouts/login (0.0ms)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------
+LoginTest: test_unsucessful_login
+---------------------------------
+Started GET "/authentication/login" for 127.0.0.1 at 2016-03-09 11:33:21 -0300
+Processing by AuthenticationController#login as HTML
+  Rendered authentication/login.html.erb within layouts/login (0.0ms)
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+Started POST "/authentication/login" for 127.0.0.1 at 2016-03-09 11:33:21 -0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"fulano@aiesec.net", "password"=>"[FILTERED]"}
+  Rendered authentication/login.html.erb within layouts/login (0.0ms)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "owners"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 15:00:20', '2016-03-09 15:00:20', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "owners" ("name", "created_at", "updated_at", "id") VALUES ('MyString', '2016-03-09 15:00:20', '2016-03-09 15:00:20', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "archives"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 15:00:20', '2016-03-09 15:00:20', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "archives" ("name", "owner", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', '2016-03-09 15:00:20', '2016-03-09 15:00:20', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "users"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "users" ("name", "email", "photo_url", "postion", "created_at", "updated_at", "id") VALUES ('Beatriz Vasconcelos', 'beatrizv@gmail.com', 'MyString', 'MyString', '2016-03-09 15:00:20', '2016-03-09 15:00:20', 976597674)
+  [1m[36m (73.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-------------------------------
+LoginTest: test_sucessful_login
+-------------------------------
+Started GET "/authentication/login" for 127.0.0.1 at 2016-03-09 12:00:21 -0300
+Processing by AuthenticationController#login as HTML
+  Rendered authentication/login.html.erb within layouts/login (0.4ms)
+Completed 200 OK in 105ms (Views: 98.8ms | ActiveRecord: 0.0ms)
+Started POST "/authentication/login" for 127.0.0.1 at 2016-03-09 12:00:21 -0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"gabriela.brasil@aiesec.net", "password"=>"[FILTERED]"}
+  Rendered authentication/login.html.erb within layouts/login (0.0ms)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------
+LoginTest: test_unsucessful_login
+---------------------------------
+Started GET "/authentication/login" for 127.0.0.1 at 2016-03-09 12:00:21 -0300
+Processing by AuthenticationController#login as HTML
+  Rendered authentication/login.html.erb within layouts/login (0.0ms)
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.0ms)
+Started POST "/authentication/login" for 127.0.0.1 at 2016-03-09 12:00:21 -0300
+Processing by AuthenticationController#login as HTML
+  Parameters: {"email"=>"fulano@aiesec.net", "password"=>"[FILTERED]"}
+  Rendered authentication/login.html.erb within layouts/login (0.0ms)
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m

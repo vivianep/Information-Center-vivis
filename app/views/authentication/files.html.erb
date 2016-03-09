@@ -1,0 +1,269 @@
+<!-- Page that shows the files -->
+<!doctype html>
+
+
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Arquivos</title>
+        
+    <%= stylesheet_link_tag "https://storage.googleapis.com/code.getmdl.io/1.0.5/material.indigo-light_blue.min.css" %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/icon?family=Material+Icons" %>
+    <%= stylesheet_link_tag "main" %>
+
+    <%= javascript_include_tag "upload.js" %>
+    <%= javascript_include_tag "move_file_modal.js" %>
+
+    <%= javascript_include_tag "modernizr-2.8.3-respond-1.4.2.min.js" %>
+    <%= javascript_include_tag "toggle-visibility.js" %>
+
+    <%= javascript_include_tag "material.min.js" %>
+    <%= javascript_include_tag "jquery-2.1.4.min.js" %>
+    <%= javascript_include_tag "lightbox.js" %>
+    <%= javascript_include_tag "dropzone.js" %>
+    <%= javascript_include_tag "popup.js" %>
+    <%= javascript_include_tag "application.js" %>
+    
+    
+    
+
+  </head>
+
+
+  <body>
+  
+          
+                  
+          <div id ="main-content" class="mdl-grid mdl-grid--no-spacing">
+
+            <div id="arquivo">
+              <div class="mdl-cell mdl-cell--12-col mdl-color--indigo-900 mdl-color-text--grey-100">
+              <h1>Arquivos</h1>
+              <span><%= session[:dbox_path]%></span> 
+
+          
+              <nav class="mdl-navigation">
+                <ul>
+                  <li>
+                                  
+              <!--UPLOAD FILES -->  
+                <%= link_to("javascript:fadeT()", :class => "mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent fab-top-right") do %>
+                   <i class="material-icons mdl-color-text--white">file_upload</i>
+                <% end%>
+                    <div class="mdl-tooltip" for="btnadd1">
+                      Adicionar arquivo
+                    </div>
+              </li>
+              <!-- end -->
+
+              <!-- CREATE FOLDER -->  
+                    <li>
+                
+                  
+                  <%# text_field_tag (:folder_name) %>
+                  <%= button_to( "javascript:createFolderPopUp()", :class => "mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent fab-top-right", :id => "btnadd2"  ) do %>
+                    <i class="material-icons mdl-color-text--white" > folder </i>
+                  <% end %>
+
+                
+
+              <div class="mdl-tooltip" for="btnadd2">
+                Adicionar pasta
+              </div>
+              </li>
+              <!-- END -->
+                  </ul>
+              </nav>
+          
+            </div>
+
+              <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+            <table class="mdl-data-table mdl-js-data-table mdl-color--grey-100">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Nome</th>
+                  <th>Data de Criação</th>
+                  <th>Data de modificação</th>
+                  <th>Tamanho</th>
+                  <th>Tipo</th>
+                  <th>Autor</th>
+                  <th>Versões</th>
+
+                </tr>
+              </thead>
+              <!-- SHOW THE DIRECTORIES AND FILES FROM DROPBOX -->
+              <% @archives.each_with_index do |a,index| %>
+                <tbody>
+                <% if a.dir == true%>
+                  <tr>
+
+                  <%= form_tag :action => 'navigation_params', :method => 'POST' do%>
+                      <%= hidden_field_tag(:parent_id, "/"+a.name+"/") %>
+                    <td>
+                      <%= button_tag( :type => 'submit', :class => "file-button file-name") do %>
+                        <i class="material-icons" role="presentation">folder</i>
+                      <% end %>
+                    </td>
+                    <!-- Button for enter a folder -->
+                    <td> <%= button_tag( :type => 'submit', :class => "file-button file-name", :id => "#{index}") do %>
+                      <%= a.name %>
+                    <% end %> </td>
+
+                    <div class="mdl-tooltip" for=<%= index %> >
+                      <%= a.name %>
+                    </div>
+
+                  <% end %>
+
+                  <td> <%= localize(a.created_at, :format => :short) %> </td><td> <%= a.updated_at[0..9] %> </td><td> </td><td> </td><td> </td><td> </td><td> </td>
+
+                  <td>
+                    <%= form_tag :action => 'remove' do%>
+                      <%= hidden_field_tag(:to_remove, a.name) %>
+                        <%= button_tag( :type => 'submit', :class => "mdl-button mdl-js-button mdl-button--icon mdl-button--colored", :data => {:confirm => 'Tem certeza que deseja deletar esta pasta?'}) do %>
+                          <i class="material-icons">delete</i>
+                        <% end %>
+                    <% end %>
+                  </td>
+                  <td> </td>
+                </tr>
+
+              <% else %>
+                <tr>
+                  <td> </td>
+                  <td>
+                  <!-- File name -->
+                  <p  class="file-name" id= <%= index%> > <%= a.name %> </p> </td> 
+                    <div class="mdl-tooltip" for=<%= index %> >
+                      <%= a.name %>
+                    </div>
+
+                  <td> <%= localize(a.created_at, :format => :short)%> </td>  <!-- Creation date -->
+                  <td> <%= a.updated_at[0..9]%> </td>  <!-- Modification date-->
+                  <td> <%# d[3] %> </td>  <!-- Size -->
+                  <td> <%# d[4] %> </td>  <!-- Type -->
+
+
+                  <td> <p  class="owner-name" id= <%= a.name%> > <%= @owner = a.owner %> </p> </td> <!-- Owner -->
+                    <div class="mdl-tooltip" for=<%= a.name%>  >
+                      <%= a.owner %>
+                    </div>
+                  <!-- Tamanho -->
+                  <td> </td>
+                  <!-- Download-->
+                  <td>
+                    
+                    
+                    <%= link_to($client.media(a.name)['url'], :class => "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-button--colored")  do %>
+                      <i class="material-icons">get_app</i>
+                    <% end%>
+                  </td>
+
+                  <td>
+                    <%= form_tag :action => 'remove' do%>
+                      <%= hidden_field_tag(:to_remove, a.name) %>
+                        <%= button_tag( :type => 'submit', :class => "mdl-button mdl-js-button mdl-button--icon mdl-button--colored") do %>
+                          <i class="material-icons">delete</i>
+                        <% end %>
+                    <% end %>
+                  </td>
+
+                  <td> 
+                    <%= link_to("javascript:movePopUp()", :class => "mdl-button mdl-js-button mdl-button--icon mdl-button--colored", :name => "move_link",:id => a.name) do %>
+                      <i class="material-icons">sort</i>
+                    <% end %> 
+                  </td>
+              <% end %>
+              <% end %>
+              </tbody>
+              </table>
+          <!-- Pages' links -->
+          </div>
+        </div>
+      </div>    
+  </body>
+
+  <div class="mdl-card" id="modal">
+  <div>
+    <p id="cancel"> <%= link_to "x", "javascript:fadeT()" %> </p>
+    </div>
+      <div class="mdl-card__title mdl-card--border" >
+        <h2 class="mdl-card__title-text"> Upload </h2>
+      </div>
+      <div class="mdl-card__subtitle-text">
+        <strong>Suba um arquivo</strong> 
+      </div>
+      <div class="mdl-card__actions">
+        <%= form_tag({action: :upload}, multipart: true) do %>
+          <%= hidden_field_tag(:parent_id, session[:dbox_path]) %>
+          <%= hidden_field_tag(:owner, current_user.name) %>
+          <div class="mdl-card__actions">
+          <%= file_field_tag 'file' %> <br/>
+          </div>
+          <div class="mdl-card__actions">
+          <%= submit_tag "Subir" %>
+          </div>
+        <% end %>
+      </div>
+
+
+  </div>
+
+  <div class="mdl-card" id="modal_to_move">
+  
+    <span id="cancel"> <%= link_to "x", "javascript:movePopUp()" %> </span>
+  
+      <div class="mdl-card__title mdl-card--border" >
+        <h2 class="mdl-card__title-text"> Mover </h2>
+      </div>
+      
+      <div class="mdl-card__actions">
+        <%= form_tag({action: :move}) do %>
+          <%= hidden_field_tag(:parent_id, session[:dbox_path]) %>
+          <%= hidden_field_tag "page", session[:page_number] %>
+          <%# hidden_field_tag(:fil, $files) %>
+          <%= hidden_field_tag(:owner, current_user.name) %> 
+          <%= hidden_field_tag :move_from %>  
+          <div class="mdl-card__actions">
+          <%= select_tag "move_to", options_for_select(Archive.where(dir: true).pluck(:name), Archive.where(dir: true).first)%>
+          </div>
+          <div class="mdl-card__actions">
+          <%= submit_tag "mover" %>
+          </div>
+        <% end %>
+      </div>
+
+
+  </div>
+
+    <div class="mdl-card" id="modal_to_create_folder">
+  
+    <span id="cancel"> <%= link_to "x", "javascript:createFolderPopUp()" %> </span>
+  
+      <div class="mdl-card__title mdl-card--border" >
+        <h2 class="mdl-card__title-text"> Criar Pasta </h2>
+      </div>
+      
+      <div class="mdl-card__actions">
+        <%= form_tag({action: :navigation_params}, multipart: true) do %>
+          <%= hidden_field_tag "parent_id", session[:dbox_path] %>
+          <%= hidden_field_tag "page", session[:page_number] %>
+          <%# hidden_field_tag "fil", $files %>
+          <div class="mdl-card__actions">
+          <%= text_field_tag "folder_name"  %>
+          </div>
+          <div class="mdl-card__actions">
+          <%= submit_tag "Criar" %>
+          </div>
+        <% end %>
+      </div>
+
+
+  </div>
+
+
+  
+</html>
